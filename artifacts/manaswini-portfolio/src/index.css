@@ -139,14 +139,25 @@
 .section-kicker::before { content:''; display:block; width:28px; height:1px; background:#d9623f; }
 .project-card { border-top:1px solid #c9c1b2; padding-top:24px; transition:transform .3s ease; }
 .project-card:hover { transform:translateY(-5px); }
+.project-image-frame { position:relative; aspect-ratio:1.45 / 1; overflow:hidden; border-radius:4px; background:#d4ddd0; }
+.project-image-frame img { display:block; width:100%; height:100%; object-fit:cover; transition:transform .55s cubic-bezier(.2,.7,.2,1); }
+.project-card:hover .project-image-frame img { transform:scale(1.035); }
+.project-image-frame-square { background:#365f86; }
+.project-image-frame-square img { object-fit:contain; }
+.project-image-label { position:absolute; top:14px; left:14px; padding:7px 10px; border:1px solid hsl(0 0% 100% / .48); border-radius:999px; background:hsl(28 20% 10% / .35); color:#fff; font:9px var(--app-font-mono); letter-spacing:.12em; }
+.project-image-number { position:absolute; right:14px; bottom:10px; color:hsl(0 0% 100% / .82); font-size:44px; line-height:1; text-shadow:0 2px 14px hsl(0 0% 0% / .24); }
 .project-index { font:11px var(--app-font-mono); color:#bd5639; letter-spacing:.08em; }
 .tag { display:inline-flex; padding:7px 10px; background:#ede9dd; border-radius:3px; color:#45564e; font:10px var(--app-font-mono); letter-spacing:.015em; }
 .skill-chip { border:1px solid #d4cdbf; border-radius:999px; padding:8px 12px; font-size:12px; color:#526057; transition:background .2s ease,color .2s ease,transform .2s ease; }
 .skill-chip:hover { background:#23453a; color:#fbf8f0; transform:translateY(-2px); }
 .soft-panel { background:#e9e5d9; }
+.creative-artwork { position:relative; margin:0; padding:18px; background:#e9e5d9; }
+.creative-artwork img { display:block; width:100%; max-height:420px; object-fit:cover; object-position:center 45%; }
+.creative-artwork figcaption { padding-top:14px; color:#526057; font-size:9px; letter-spacing:.14em; }
 .contact-panel { background:#24473c; color:#f7f3e9; }
 .contact-panel a { transition:color .2s ease; }
 .contact-panel a:hover { color:#f0b96d; }
+.contact-panel .say-hello:hover { color:#24473c; }
 .stagger-in { animation: arrive .75s cubic-bezier(.2,.7,.2,1) both; }
 .delay-1 { animation-delay:.12s; }
 .delay-2 { animation-delay:.24s; }

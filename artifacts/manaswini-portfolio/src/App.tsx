@@ -1,14 +1,14 @@
 import { useState } from 'react';
-import { ArrowDown, ArrowDownRight, ArrowUpRight, Menu, X, Download, MapPin, Mail, Github, Linkedin, Code2, BrainCircuit, Layers3, GraduationCap, Sparkles } from 'lucide-react';
+import { ArrowDown, ArrowDownRight, ArrowUpRight, Menu, X, MapPin, Mail, Github, Linkedin, GraduationCap, Sparkles } from 'lucide-react';
 
 const linkedin = 'https://www.linkedin.com/in/manaswini-anand-m-1726a7311';
 const github = 'https://github.com/21manaswini4-spec';
-const resume = '/manaswini-anand-resume.pdf';
+const email = 'manurupa2006@gmail.com';
 
 const projects = [
-  { number: '01', title: 'Risk-informed validation', subtitle: 'Quality signals, made useful.', description: 'A validation framework for Java Maven projects that turns test and code-quality signals into class-level risk priorities. A FastAPI service feeds a React dashboard, with the workflow containerized in Docker.', details: 'JUnit / Surefire · JaCoCo · PMD · SpotBugs · CK Metrics', tags: ['Java', 'Python', 'FastAPI', 'React', 'Docker'], mark: <Layers3 size={26} strokeWidth={1.4} />, tone: 'sage' },
-  { number: '02', title: 'Detech', subtitle: 'A closer look at suspicious links.', description: 'A web link analyzer that classifies phishing risk with TF-IDF features and Naive Bayes, then looks beyond the URL—using YOLOv8 and OCR to inspect screenshots and extract page text.', details: 'URL classification · screenshot inspection · OCR', tags: ['Python', 'FastAPI', 'TF-IDF', 'Naive Bayes', 'YOLOv8'], mark: <Code2 size={26} strokeWidth={1.4} />, tone: 'peach' },
-  { number: '03', title: 'NeuroVision AI', subtitle: 'Exploring signals in retinal images.', description: 'An AI-assisted exploration of retinal fundus images for Alzheimer’s risk estimation. CNNs and transfer learning with ResNet and VGG16 meet an OpenCV preprocessing pipeline and probability-based outputs.', details: 'Research-minded prototype · not a diagnostic tool', tags: ['TensorFlow', 'Keras', 'CNN', 'ResNet', 'OpenCV'], mark: <BrainCircuit size={26} strokeWidth={1.4} />, tone: 'butter' },
+  { number: '01', title: 'Risk-informed validation', subtitle: 'Quality signals, made useful.', description: 'A validation framework for Java Maven projects that turns test and code-quality signals into class-level risk priorities. A FastAPI service feeds a React dashboard, with the workflow containerized in Docker.', details: 'JUnit / Surefire · JaCoCo · PMD · SpotBugs · CK Metrics', tags: ['Java', 'Python', 'FastAPI', 'React', 'Docker'], image: '/images/projects/risk-informed-validation.png', imageAlt: 'Risk meter showing low, medium, and high validation levels', squareImage: false },
+  { number: '02', title: 'Detech', subtitle: 'A closer look at suspicious links.', description: 'A web link analyzer that classifies phishing risk with TF-IDF features and Naive Bayes, then looks beyond the URL—using YOLOv8 and OCR to inspect screenshots and extract page text.', details: 'URL classification · screenshot inspection · OCR', tags: ['Python', 'FastAPI', 'TF-IDF', 'Naive Bayes', 'YOLOv8'], image: '/images/projects/detech-link-analyzer.png', imageAlt: 'Detech link analyzer app artwork', squareImage: true },
+  { number: '03', title: 'NeuroVision AI', subtitle: 'Exploring signals in retinal images.', description: 'An AI-assisted exploration of retinal fundus images for Alzheimer’s risk estimation. CNNs and transfer learning with ResNet and VGG16 meet an OpenCV preprocessing pipeline and probability-based outputs.', details: 'Research-minded prototype · not a diagnostic tool', tags: ['TensorFlow', 'Keras', 'CNN', 'ResNet', 'OpenCV'], image: '/images/projects/neurovision-ai.png', imageAlt: 'Close-up eye with digital vision-analysis overlays', squareImage: false },
 ];
 
 const skillGroups = [
@@ -36,6 +36,7 @@ function App() {
             <a className="nav-link no-underline" href="#work">Projects</a>
             <a className="nav-link no-underline" href="#skills">Skills</a>
             <a className="nav-link no-underline" href="#education">Education</a>
+            <a className="nav-link no-underline" href="#creative">Creative</a>
             <a className="rounded-full border border-[#24473c] px-4 py-2 text-[#24473c] no-underline transition hover:bg-[#24473c] hover:text-[#f7f3e9]" href="#contact">Say hello <ArrowUpRight className="ml-1 inline" size={13} /></a>
           </nav>
           <button type="button" className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-[#c9c1b2] text-[#24473c] md:hidden" aria-label={menuOpen ? 'Close navigation' : 'Open navigation'} aria-expanded={menuOpen} onClick={() => setMenuOpen(!menuOpen)} data-testid="button-mobile-menu">
@@ -43,7 +44,7 @@ function App() {
           </button>
         </div>
         {menuOpen && <nav className="wrap grid gap-1 pb-4 md:hidden" aria-label="Mobile navigation">
-          {['About', 'Projects', 'Skills', 'Education', 'Contact'].map((item) => <a key={item} href={`#${item.toLowerCase() === 'projects' ? 'work' : item.toLowerCase()}`} className="rounded-lg px-3 py-3 text-sm text-[#24473c] no-underline hover:bg-[#e9e5d9]" onClick={closeMenu}>{item}<ArrowUpRight className="float-right" size={15} /></a>)}
+          {['About', 'Projects', 'Skills', 'Education', 'Creative', 'Contact'].map((item) => <a key={item} href={`#${item.toLowerCase() === 'projects' ? 'work' : item.toLowerCase()}`} className="rounded-lg px-3 py-3 text-sm text-[#24473c] no-underline hover:bg-[#e9e5d9]" onClick={closeMenu}>{item}<ArrowUpRight className="float-right" size={15} /></a>)}
         </nav>}
       </header>
 
@@ -56,16 +57,12 @@ function App() {
             <p className="stagger-in delay-2 mt-3 max-w-[455px] text-[14px] leading-[1.8] text-[#788078]">From full-stack tools to machine-learning experiments, I build things to understand how they work—and to make them work for someone.</p>
             <div className="stagger-in delay-3 mt-9 flex flex-wrap items-center gap-4">
               <a href="#work" className="inline-flex items-center gap-3 rounded-full bg-[#24473c] px-6 py-3.5 text-[13px] font-medium text-[#f8f5ed] no-underline transition hover:-translate-y-0.5 hover:bg-[#315a4c] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#d9623f]">Explore my work <ArrowDownRight size={16} /></a>
-              <a href={resume} download="Manaswini-Anand-Resume.pdf" className="inline-flex items-center gap-2 px-3 py-3 text-[13px] text-[#536157] no-underline transition hover:text-[#c65334] focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#d9623f]"><Download size={15} />Résumé</a>
             </div>
             <div className="mt-12 flex items-center gap-2 text-[11px] text-[#778078]"><MapPin size={14} className="text-[#cf6242]" /> Bengaluru, Karnataka <span className="mx-1 h-1 w-1 rounded-full bg-[#d9623f]" /> Open to learning, building & collaborating</div>
           </div>
-          <div className="hero-photo stagger-in delay-2">
+            <div className="hero-photo stagger-in delay-2">
             <img src="/images/manaswini-anand.png" alt="Portrait of Manaswini Anand" fetchPriority="high" />
             <span className="photo-note">A LITTLE ABOUT ME — 2025</span>
-            <div className="absolute -right-5 top-[14%] flex h-[90px] w-[90px] -rotate-6 flex-col items-center justify-center rounded-full bg-[#24473c] text-center text-[#f7f3e9] shadow-[0_12px_30px_rgba(35,65,54,.16)]">
-              <span className="serif text-[27px] leading-none">8.16</span><span className="mono mt-1 text-[8px] tracking-[.1em]">CGPA / 10</span>
-            </div>
             <span className="absolute -bottom-10 right-3 serif text-[19px] italic text-[#69796e]">learning in public, one project at a time</span>
           </div>
         </section>
@@ -91,7 +88,6 @@ function App() {
               <p>At K.S. Institute of Technology, I’m building a strong foundation in computer science while learning by making. My projects move between backend systems, interfaces, and applied machine learning.</p>
               <p>I’m happiest when I can follow a question end-to-end: understand the data, shape the logic, build the tool, and make the result legible to another person.</p>
             </div>
-            <a className="mt-7 inline-flex items-center gap-2 text-[12px] font-semibold text-[#24473c] no-underline hover:text-[#c65334]" href={resume} download="Manaswini-Anand-Resume.pdf">Read the résumé <ArrowUpRight size={14} /></a>
           </div>
         </section>
 
@@ -103,10 +99,10 @@ function App() {
             </div>
             <div className="grid gap-x-10 gap-y-14 md:grid-cols-3">
               {projects.map((project) => <article className="project-card" key={project.number} data-testid={`project-card-${project.number}`}>
-                <div className={`mb-8 flex aspect-[1.45/1] items-center justify-between overflow-hidden rounded-sm p-7 ${project.tone === 'sage' ? 'bg-[#d4ddd0]' : project.tone === 'peach' ? 'bg-[#efd4c7]' : 'bg-[#e8d79e]'}`}>
-                  <span className="self-start rounded-full border border-[#24473c]/20 px-3 py-1.5 mono text-[9px] tracking-[.12em] text-[#526057]">PROJECT {project.number}</span>
-                  <span className="flex h-[62px] w-[62px] items-center justify-center rounded-full border border-[#24473c]/25 text-[#24473c]">{project.mark}</span>
-                  <span className="serif self-end text-[50px] leading-none text-[#24473c]/30">{project.number}</span>
+                <div className={`project-image-frame mb-8 ${project.squareImage ? 'project-image-frame-square' : ''}`}>
+                  <img src={project.image} alt={project.imageAlt} loading="lazy" />
+                  <span className="project-image-label">PROJECT {project.number}</span>
+                  {!project.squareImage && <span className="project-image-number serif">{project.number}</span>}
                 </div>
                 <span className="project-index">PROJECT / {project.number}</span>
                 <h3 className="serif mt-3 text-[30px] leading-tight text-[#24473c]">{project.title}</h3>
@@ -146,16 +142,32 @@ function App() {
           </div>
         </section>
 
+        <section id="creative" className="wrap creative-section grid gap-10 py-24 md:grid-cols-[1fr_1fr] md:items-center md:gap-20 md:py-32">
+          <figure className="creative-artwork">
+            <img src="/images/creative-storytelling.png" alt="Camera artwork for video editing and visual storytelling" />
+            <figcaption className="mono">VISUAL STORIES · MADE FRAME BY FRAME</figcaption>
+          </figure>
+          <div>
+            <p className="section-kicker">Beyond the code</p>
+            <h2 className="serif mt-5 text-5xl leading-[1.04] text-[#24473c] md:text-[62px]">Stories, edits,<br />community.</h2>
+            <p className="mt-6 max-w-[470px] text-[14px] leading-[1.9] text-[#667168]">I’m into video editing and digital storytelling—shaping ideas into visual stories that feel clear, human, and worth remembering.</p>
+            <div className="mt-8 border-t border-[#d0c8b9] pt-5">
+              <p className="mono text-[10px] tracking-[.12em] text-[#bf5739]">COMMUNITY</p>
+              <p className="mt-2 text-[14px] leading-[1.8] text-[#526057]">NSS member, taking part in community service and awareness activities.</p>
+            </div>
+          </div>
+        </section>
+
         <section id="contact" className="wrap py-24 md:py-32">
           <div className="contact-panel relative overflow-hidden rounded-sm px-7 py-12 md:px-16 md:py-16">
             <div aria-hidden="true" className="pointer-events-none absolute -right-16 -top-24 h-[280px] w-[280px] rounded-full border border-[#f7f3e9]/15 md:h-[420px] md:w-[420px]"><div className="absolute inset-8 rounded-full border border-[#f7f3e9]/10" /></div>
             <div className="relative grid gap-12 md:grid-cols-[1.1fr_.9fr] md:items-end">
               <div><p className="section-kicker !text-[#efb276]">A note is a good start</p><h2 className="serif mt-6 max-w-[550px] text-[52px] leading-[.98] text-[#f7f3e9] md:text-[76px]">Let’s make<br />something useful.</h2><p className="mt-6 max-w-[360px] text-[13px] leading-[1.8] text-[#d0d9d0]">Have a thoughtful problem, a project to discuss, or just want to say hello? I’d love to hear from you.</p></div>
               <div className="grid gap-4 text-[13px]">
-                <a href="mailto:manurupa2006@gmail.com" className="flex items-center justify-between border-b border-[#f7f3e9]/25 py-4 no-underline"><span className="flex items-center gap-3"><Mail size={16} /> Email</span><span className="flex items-center gap-2 text-[#d0d9d0]">manurupa2006@gmail.com <ArrowUpRight size={14} /></span></a>
+                <a href={`mailto:${email}`} className="say-hello inline-flex w-fit items-center gap-2 rounded-full bg-[#e8b866] px-5 py-3 text-[12px] font-semibold text-[#24473c] no-underline transition hover:-translate-y-0.5 hover:bg-[#f0c77e]"><Mail size={15} /> Say hello <ArrowUpRight size={14} /></a>
+                <span className="text-[12px] text-[#d0d9d0]">{email}</span>
                 <a href={linkedin} target="_blank" rel="noreferrer" className="flex items-center justify-between border-b border-[#f7f3e9]/25 py-4 no-underline"><span className="flex items-center gap-3"><Linkedin size={16} /> LinkedIn</span><span className="flex items-center gap-2 text-[#d0d9d0]">Connect <ArrowUpRight size={14} /></span></a>
                 <a href={github} target="_blank" rel="noreferrer" className="flex items-center justify-between border-b border-[#f7f3e9]/25 py-4 no-underline"><span className="flex items-center gap-3"><Github size={16} /> GitHub</span><span className="flex items-center gap-2 text-[#d0d9d0]">See my work <ArrowUpRight size={14} /></span></a>
-                <a href={resume} download="Manaswini-Anand-Resume.pdf" className="mt-3 inline-flex w-fit items-center gap-2 rounded-full bg-[#e8b866] px-5 py-3 text-[12px] font-semibold text-[#24473c] no-underline transition hover:-translate-y-0.5 hover:bg-[#f0c77e]"><Download size={15} /> Download résumé</a>
               </div>
             </div>
           </div>
