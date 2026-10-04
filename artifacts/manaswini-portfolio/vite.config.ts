@@ -4,6 +4,10 @@ import tailwindcss from '@tailwindcss/vite';
 import { defineConfig } from 'vite';
 
 import runtimeErrorOverlay from '@replit/vite-plugin-runtime-error-modal';
+const port = Number(process.env.PORT) || 5173;
+
+const basePath =
+  process.env.BASE_PATH || '/Manaswini-Anand-Portfolio/';
 
 const rawPort = process.env.PORT;
 
