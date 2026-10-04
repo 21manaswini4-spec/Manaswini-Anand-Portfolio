@@ -6,9 +6,11 @@ const github = 'https://github.com/21manaswini4-spec';
 const email = 'manurupa2006@gmail.com';
 
 const projects = [
-  { number: '01', title: 'Risk-informed validation', subtitle: 'Quality signals, made useful.', description: 'A validation framework for Java Maven projects that turns test and code-quality signals into class-level risk priorities. A FastAPI service feeds a React dashboard, with the workflow containerized in Docker.', details: 'JUnit / Surefire · JaCoCo · PMD · SpotBugs · CK Metrics', tags: ['Java', 'Python', 'FastAPI', 'React', 'Docker'], image: '/images/projects/risk-informed-validation.png', imageAlt: 'Risk meter showing low, medium, and high validation levels', squareImage: false },
-  { number: '02', title: 'Detech', subtitle: 'A closer look at suspicious links.', description: 'A web link analyzer that classifies phishing risk with TF-IDF features and Naive Bayes, then looks beyond the URL—using YOLOv8 and OCR to inspect screenshots and extract page text.', details: 'URL classification · screenshot inspection · OCR', tags: ['Python', 'FastAPI', 'TF-IDF', 'Naive Bayes', 'YOLOv8'], image: '/images/projects/detech-link-analyzer.png', imageAlt: 'Detech link analyzer app artwork', squareImage: true },
-  { number: '03', title: 'NeuroVision AI', subtitle: 'Exploring signals in retinal images.', description: 'An AI-assisted exploration of retinal fundus images for Alzheimer’s risk estimation. CNNs and transfer learning with ResNet and VGG16 meet an OpenCV preprocessing pipeline and probability-based outputs.', details: 'Research-minded prototype · not a diagnostic tool', tags: ['TensorFlow', 'Keras', 'CNN', 'ResNet', 'OpenCV'], image: '/images/projects/neurovision-ai.png', imageAlt: 'Close-up eye with digital vision-analysis overlays', squareImage: false },
+  { slug: 'agrowise-ai', category: 'AgriTech · AI', title: 'AgroWise AI', subtitle: 'Smarter support for everyday farming.', description: 'A frontend-focused agricultural assistance app designed to help farmers make better decisions. It brings crop information, AI-assisted recommendations, agricultural data visualizations, and a responsive farmer-oriented experience into one place.', details: 'Crop information · AI recommendations · data visualization', tags: ['React', 'TypeScript', 'Vite', 'AgTech', 'Responsive UI'], image: '/images/projects/agrowise-ai.png', imageAlt: 'AgroWise AI diagram showing agricultural assistance, crop information, recommendations, data visualization, and a farmer dashboard', imageLayout: 'banner', imageFit: 'contain' },
+  { slug: 'risk-informed-validation', category: 'Software quality', title: 'Risk-informed validation', subtitle: 'Quality signals, made useful.', description: 'A validation framework for Java Maven projects that turns test and code-quality signals into class-level risk priorities. A FastAPI service feeds a React dashboard, with the workflow containerized in Docker.', details: 'JUnit / Surefire · JaCoCo · PMD · SpotBugs · CK Metrics', tags: ['Java', 'Python', 'FastAPI', 'React', 'Docker'], image: '/images/projects/risk-informed-validation.png', imageAlt: 'Risk meter showing low, medium, and high validation levels', imageLayout: 'standard', imageFit: 'cover' },
+  { slug: 'naari', category: 'E-commerce', title: 'Naari', subtitle: 'A considered online jewelry storefront.', description: 'A responsive, brand-focused store for browsing earrings, necklaces, and bracelets. Product discovery, category browsing and filtering, product details and pricing, cart management, and an order flow shape a clear shopping experience.', details: 'Catalog · filters · product details · cart · order flow', tags: ['React', 'TypeScript', 'E-commerce', 'Responsive UI'], image: '/images/projects/naari-jewelry-store.png', imageAlt: 'Naari jewelry store illustration showing product discovery, categories, product details, cart, and ordering', imageLayout: 'landscape', imageFit: 'contain' },
+  { slug: 'detech', category: 'Web safety', title: 'Detech', subtitle: 'A closer look at suspicious links.', description: 'A web link analyzer that classifies phishing risk with TF-IDF features and Naive Bayes, then looks beyond the URL—using YOLOv8 and OCR to inspect screenshots and extract page text.', details: 'URL classification · screenshot inspection · OCR', tags: ['Python', 'FastAPI', 'TF-IDF', 'Naive Bayes', 'YOLOv8'], image: '/images/projects/detech-link-analyzer.png', imageAlt: 'Detech link analyzer app artwork', imageLayout: 'square', imageFit: 'contain' },
+  { slug: 'neurovision-ai', category: 'Computer vision', title: 'NeuroVision AI', subtitle: 'Exploring signals in retinal images.', description: 'An AI-assisted exploration of retinal fundus images for Alzheimer’s risk estimation. CNNs and transfer learning with ResNet and VGG16 meet an OpenCV preprocessing pipeline and probability-based outputs.', details: 'Research-minded prototype · not a diagnostic tool', tags: ['TensorFlow', 'Keras', 'CNN', 'ResNet', 'OpenCV'], image: '/images/projects/neurovision-ai.png', imageAlt: 'Close-up eye with digital vision-analysis overlays', imageLayout: 'standard', imageFit: 'cover' },
 ];
 
 const skillGroups = [
@@ -95,16 +97,14 @@ function App() {
           <div className="wrap">
             <div className="mb-14 flex flex-col justify-between gap-6 md:mb-20 md:flex-row md:items-end">
               <div><p className="section-kicker">Selected projects</p><h2 className="serif mt-5 text-5xl leading-none text-[#24473c] md:text-[68px]">Built to explore.</h2></div>
-              <p className="max-w-[325px] text-[13px] leading-[1.8] text-[#677268]">A few practical experiments in software quality, web safety, and the possibilities of computer vision.</p>
+              <p className="max-w-[325px] text-[13px] leading-[1.8] text-[#677268]">Projects across digital agriculture, e-commerce, software quality, web safety, and computer vision.</p>
             </div>
-            <div className="grid gap-x-10 gap-y-14 md:grid-cols-3">
-              {projects.map((project) => <article className="project-card" key={project.number} data-testid={`project-card-${project.number}`}>
-                <div className={`project-image-frame mb-8 ${project.squareImage ? 'project-image-frame-square' : ''}`}>
-                  <img src={project.image} alt={project.imageAlt} loading="lazy" />
-                  <span className="project-image-label">PROJECT {project.number}</span>
-                  {!project.squareImage && <span className="project-image-number serif">{project.number}</span>}
+            <div className="project-grid">
+              {projects.map((project) => <article className="project-card" key={project.slug} data-testid={`project-card-${project.slug}`}>
+                <div className={`project-image-frame project-image-frame-${project.imageLayout} project-image-fit-${project.imageFit} mb-6`}>
+                  <img src={project.image} alt={project.imageAlt} />
                 </div>
-                <span className="project-index">PROJECT / {project.number}</span>
+                <span className="project-category">{project.category}</span>
                 <h3 className="serif mt-3 text-[30px] leading-tight text-[#24473c]">{project.title}</h3>
                 <p className="mt-2 text-[12px] font-semibold text-[#be5a3b]">{project.subtitle}</p>
                 <p className="mt-4 min-h-[116px] text-[13px] leading-[1.8] text-[#667168]">{project.description}</p>
@@ -144,8 +144,8 @@ function App() {
 
         <section id="creative" className="wrap creative-section grid gap-10 py-24 md:grid-cols-[1fr_1fr] md:items-center md:gap-20 md:py-32">
           <figure className="creative-artwork">
-            <img src="/images/creative-storytelling.png" alt="Camera artwork for video editing and visual storytelling" />
-            <figcaption className="mono">VISUAL STORIES · MADE FRAME BY FRAME</figcaption>
+            <img src="/images/capture-moments.jpg" alt="Illustration of a camera with the message Capture Moments and tell your story through every shot" />
+            <figcaption className="mono">CAPTURE MOMENTS · TELL YOUR STORY</figcaption>
           </figure>
           <div>
             <p className="section-kicker">Beyond the code</p>
